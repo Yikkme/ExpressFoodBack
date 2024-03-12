@@ -3,7 +3,7 @@ const apiRoutes = express.Router();
 
 const UsersController = require("../controllers/UsersController");
 const ProductsController = require("../controllers/ProductsController");
-const CommandsControllers = require("../controllers/CommandsController");
+const OrdersControllers = require("../controllers/OrdersController");
 const DeliverersController = require("../controllers/DeliverersController");
 
 const AuthController = require("../controllers/AuthController");
@@ -44,17 +44,17 @@ apiRoutes
   .route("/UserDelete/:id")
   .delete(userVerification, UsersController.deleteUser);
 
-// Commands Routes
+// Orders Routes
 
-apiRoutes.route("/CommandsList").get(CommandsControllers.getCommands);
+apiRoutes.route("/OrdersList").get(OrdersControllers.getOrders);
 
 apiRoutes
-  .route("/CommandsList/:id")
-  .get(userVerification, CommandsControllers.getCommand);
+  .route("/OrdersList/:id")
+  .get(userVerification, OrdersControllers.getOrder);
 
-apiRoutes.route("/CommandAdd").post(CommandsControllers.addCommand);
-apiRoutes.route("/CommandUpdate/:id").put(CommandsControllers.updateCommand);
-apiRoutes.route("/CommandDelete/:id").delete(CommandsControllers.deleteCommand);
+apiRoutes.route("/OrderAdd").post(OrdersControllers.addOrder);
+apiRoutes.route("/OrderUpdate/:id").put(OrdersControllers.updateOrder);
+apiRoutes.route("/OrderDelete/:id").delete(OrdersControllers.deleteOrder);
 
 // Livreurs Routes
 
