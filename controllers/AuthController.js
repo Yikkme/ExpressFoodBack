@@ -6,7 +6,8 @@ const bcrypt = require("bcrypt");
 
 const Signup = async (req, res, next) => {
   try {
-    const { firstname, lastname, email, mdp, role, address } = req.body;
+    const { firstname, lastname, email, password, phone, role, address } =
+      req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.json({ message: "User existe déjà" });
@@ -14,12 +15,13 @@ const Signup = async (req, res, next) => {
     const user = await User.create({
       firstname,
       lastname,
+      phone,
       email,
+      address,
       password,
       role,
-      address,
     });
-    const token = createSecretToken(user._id,user);
+    const token = createSecretToken(user._id, user);
     res.set("Authorization", "Bearer " + token);
 
     res.json({
@@ -37,15 +39,15 @@ const Signup = async (req, res, next) => {
 
 const Login = async (req, res, next) => {
   try {
-    const { email, mdp } = req.body;
-    if (!email || !mdp ) {
+    const { email, password } = req.body;
+    if (!email || !password) {
       return res.json({ message: "Tous les champs sont requis" });
     }
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(500).json({ message: "Utilisateur introuvable" });
     }
-    const auth = await bcrypt.compare(mdp, user.mdp);
+    const auth = await bcrypt.compare(password, user.password);
     if (!auth) {
       return res.json({ message: "Mot de passe ou email incorrect" });
     }
@@ -56,12 +58,11 @@ const Login = async (req, res, next) => {
       _id: user._id,
       firstname: user.firstname,
       lastname: user.lastname,
+      phone: user.phone,
       email: user.email,
       role: user.role,
       address: user.address,
-
     };
-
 
     res.status(201).json({
       message: "Utilisateur connecté avec succès",

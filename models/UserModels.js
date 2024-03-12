@@ -4,18 +4,17 @@ const bcrypt = require("bcrypt");
 // Composition d'un schéma mongoDb
 
 const UsersModel = new mongoose.Schema({
-  lastname: String,
   firstname: String,
+  lastname: String,
+  phone: String,
   email: String,
+  address: String,
   password: String,
   role: { type: String, default: "client" },
-  address: String,
-
 });
 
 UsersModel.pre("save", async function () {
-  const salt = await bcrypt.genSalt(12)
-  this.password = await bcrypt.hash(this.password, salt);
+  this.password = await bcrypt.hash(this.password, 12);
 });
 
 module.exports = mongoose.model("users", UsersModel, "Users");
