@@ -8,6 +8,12 @@ const cors = require("cors");
 require("dotenv").config({ path: "./.env" });
 // Importer la connexion a mongoDb
 require("./bdd/connexion");
+
+const cronTask = require('./util/cron');
+
+// Démarrez la tâche cron pour mettre à jour les produits aléatoires quotidiennement
+cronTask();
+
 const port = process.env.PORT ;
 
 const portClient = process.env.PORT_CLIENT ;

@@ -16,6 +16,8 @@ const {
 // Gestion des routes
 
 // PRODUITS Routes
+apiRoutes.get("/randomProducts", ProductsController.getHomeProducts);
+
 
 apiRoutes.route("/ProductsList").get(ProductsController.getProducts);
 
