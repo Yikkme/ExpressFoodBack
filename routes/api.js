@@ -20,7 +20,7 @@ const {
 apiRoutes.route("/ProductsList").get(ProductsController.getProducts);
 
 apiRoutes
-  .route("/ProductsList/:id")
+  .route("/Product/:id")
   .get(userVerification, ProductsController.getProduct);
 apiRoutes.route("/ProductAdd").post(ProductsController.addProduct);
 apiRoutes.route("/ProductEdit/:id").put(ProductsController.updateProduct);
@@ -31,12 +31,10 @@ apiRoutes.route("/Register").post(AuthController.Signup);
 apiRoutes.route("/Login").post(AuthController.Login);
 
 apiRoutes.route("/UsersList").get(userVerification, UsersController.getUsers);
-apiRoutes
-  .route("/UsersList/:id")
-  .get(userVerification, UsersController.getUser);
+apiRoutes.route("/User/:id").get(userVerification, UsersController.getUser);
 apiRoutes
   .route("/UserEdit/:id")
-  .put(userVerification, authorization(["admin"]), UsersController.updateUser);
+  .put(userVerification, UsersController.updateUser);
 apiRoutes
   .route("/UserDelete/:id")
   .delete(userVerification, UsersController.deleteUser);
@@ -45,9 +43,7 @@ apiRoutes
 
 apiRoutes.route("/OrdersList").get(OrdersControllers.getOrders);
 
-apiRoutes
-  .route("/OrdersList/:id")
-  .get(userVerification, OrdersControllers.getOrder);
+apiRoutes.route("/Order/:id").get(userVerification, OrdersControllers.getOrder);
 
 apiRoutes.route("/OrderAdd").post(OrdersControllers.addOrder);
 apiRoutes.route("/OrderEdit/:id").put(OrdersControllers.updateOrder);
@@ -58,12 +54,10 @@ apiRoutes.route("/OrderDelete/:id").delete(OrdersControllers.deleteOrder);
 apiRoutes.route("/DeliverersList").get(DeliverersController.getDeliverers);
 
 apiRoutes
-  .route("/DeliverersList/:id")
+  .route("/Deliverer/:id")
   .get(userVerification, DeliverersController.getDeliverer);
 apiRoutes.route("/DelivererAdd").post(DeliverersController.addDeliverer);
-apiRoutes
-  .route("/DelivererEdit/:id")
-  .put(DeliverersController.updateDeliverer);
+apiRoutes.route("/DelivererEdit/:id").put(DeliverersController.updateDeliverer);
 apiRoutes
   .route("/DelivererDelete/:id")
   .delete(DeliverersController.deleteDeliverer);
