@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 
 module.exports.userVerification = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  console.log("Authorization Header:", authHeader);
   if (authHeader) {
     const token = authHeader.split(" ")[1];
 
@@ -23,16 +22,13 @@ module.exports.userVerification = (req, res, next) => {
   }
 };
 
-
 // Middleware pour gérer les autorisations via les roles
 module.exports.authorization = (roles) => {
-  return function(req, res, next) {
-    const userRole = req.user.role; 
+  return function (req, res, next) {
+    const userRole = req.user.role;
     if (!roles.includes(userRole)) {
-      return res.status(403).send('Accès Refusé');
+      return res.status(403).send("Accès Refusé");
     }
     next();
-  }
+  };
 };
-
-

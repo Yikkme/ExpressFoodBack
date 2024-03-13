@@ -13,21 +13,18 @@ const {
   authorization,
 } = require("../middlewares/AuthMiddleware");
 
-
 // Gestion des routes
 
 // PRODUITS Routes
 
-apiRoutes.route("/ProductsListe").get(ProductsController.getProducts);
+apiRoutes.route("/ProductsList").get(ProductsController.getProducts);
 
 apiRoutes
-  .route("/ProductsListe/:id")
+  .route("/ProductsList/:id")
   .get(userVerification, ProductsController.getProduct);
-apiRoutes.route("/ProductAjouter").post(ProductsController.addProduct);
-apiRoutes.route("/ProductModifier/:id").put(ProductsController.updateProduct);
-apiRoutes
-  .route("/ProductSuprimmer/:id")
-  .delete(ProductsController.deleteProduct);
+apiRoutes.route("/ProductAdd").post(ProductsController.addProduct);
+apiRoutes.route("/ProductEdit/:id").put(ProductsController.updateProduct);
+apiRoutes.route("/ProductDelete/:id").delete(ProductsController.deleteProduct);
 
 // USER Routes
 apiRoutes.route("/Register").post(AuthController.Signup);
@@ -38,7 +35,7 @@ apiRoutes
   .route("/UsersList/:id")
   .get(userVerification, UsersController.getUser);
 apiRoutes
-  .route("/UserModifier/:id")
+  .route("/UserEdit/:id")
   .put(userVerification, authorization(["admin"]), UsersController.updateUser);
 apiRoutes
   .route("/UserDelete/:id")
@@ -53,19 +50,19 @@ apiRoutes
   .get(userVerification, OrdersControllers.getOrder);
 
 apiRoutes.route("/OrderAdd").post(OrdersControllers.addOrder);
-apiRoutes.route("/OrderUpdate/:id").put(OrdersControllers.updateOrder);
+apiRoutes.route("/OrderEdit/:id").put(OrdersControllers.updateOrder);
 apiRoutes.route("/OrderDelete/:id").delete(OrdersControllers.deleteOrder);
 
 // Livreurs Routes
 
-apiRoutes.route("/DelivererList").get(DeliverersController.getDeliverers);
+apiRoutes.route("/DeliverersList").get(DeliverersController.getDeliverers);
 
 apiRoutes
-  .route("/DelivererList/:id")
+  .route("/DeliverersList/:id")
   .get(userVerification, DeliverersController.getDeliverer);
 apiRoutes.route("/DelivererAdd").post(DeliverersController.addDeliverer);
 apiRoutes
-  .route("/DelivererUpdate/:id")
+  .route("/DelivererEdit/:id")
   .put(DeliverersController.updateDeliverer);
 apiRoutes
   .route("/DelivererDelete/:id")
