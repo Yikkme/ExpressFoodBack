@@ -18,7 +18,6 @@ const {
 // PRODUITS Routes
 apiRoutes.get("/randomProducts", ProductsController.getHomeProducts);
 
-
 apiRoutes.route("/ProductsList").get(ProductsController.getProducts);
 
 apiRoutes
@@ -46,6 +45,7 @@ apiRoutes
 apiRoutes.route("/OrdersList").get(OrdersControllers.getOrders);
 
 apiRoutes.route("/Order/:id").get(userVerification, OrdersControllers.getOrder);
+apiRoutes.route("/Order/:userEmail").get(OrdersControllers.getOrdersByMail);
 
 apiRoutes.route("/OrderAdd").post(OrdersControllers.addOrder);
 apiRoutes.route("/OrderEdit/:id").put(OrdersControllers.updateOrder);

@@ -5,9 +5,8 @@ const mongoose = require("mongoose");
 const DeliverersModel = new mongoose.Schema({
   lastname: String,
   firstname: String,
-  statut: String,
+  status: String,
   position: String,
-
 });
 
 module.exports = mongoose.model("deliverers", DeliverersModel, "Deliverers");
