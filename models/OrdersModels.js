@@ -6,9 +6,9 @@ const DelivererModels = require("./DelivererModels");
 const OrdersModel = new mongoose.Schema({
   id: String,
   date: Date,
-  totalprice: Number,
+  price: Number,
   email: String,
-  deliverer: { type: mongoose.Schema.Types.ObjectId, ref: "Deliverer" },
+  delivererName: String,
 });
 
 module.exports = mongoose.model("orders", OrdersModel, "Orders");

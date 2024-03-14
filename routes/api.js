@@ -44,8 +44,10 @@ apiRoutes
 
 apiRoutes.route("/OrdersList").get(OrdersControllers.getOrders);
 
-apiRoutes.route("/Order/:id").get(userVerification, OrdersControllers.getOrder);
-apiRoutes.route("/Order/:userEmail").get(OrdersControllers.getOrdersByMail);
+apiRoutes
+  .route("/Order/email/:userEmail")
+  .get(OrdersControllers.getOrdersByEMail);
+apiRoutes.route("/Order/:id").get(OrdersControllers.getOrder);
 
 apiRoutes.route("/OrderAdd").post(OrdersControllers.addOrder);
 apiRoutes.route("/OrderEdit/:id").put(OrdersControllers.updateOrder);

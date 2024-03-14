@@ -16,17 +16,18 @@ const getOrder = async (req, res) => {
   let objectId = new ObjectId(id);
   try {
     const order = await OrdersModel.findById(objectId);
-    if (!produit) {
+    if (!order) {
       return res.status(404).json({ message: "commande non trouvé" });
     }
     res.status(200).json(order);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erreur du serveur" });
+    console.log(req.params.id);
   }
 };
 
-const getOrdersByMail = async (req, res) => {
+const getOrdersByEMail = async (req, res) => {
   let userEmail = req.params.userEmail;
 
   try {
@@ -95,5 +96,5 @@ module.exports = {
   addOrder,
   updateOrder,
   deleteOrder,
-  getOrdersByMail,
+  getOrdersByEMail,
 };

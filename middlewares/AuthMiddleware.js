@@ -6,11 +6,15 @@ const jwt = require("jsonwebtoken");
 
 module.exports.userVerification = (req, res, next) => {
   const authHeader = req.headers.authorization;
+  console.log("Authorization Header:", authHeader);
+
   if (authHeader) {
     const token = authHeader.split(" ")[1];
 
     jwt.verify(token, process.env.TOKEN_KEY, (err, user) => {
       if (err) {
+        console.log("Token verification error:", err.message); // For debugging
+
         return res.sendStatus(403);
       }
 
