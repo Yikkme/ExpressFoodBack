@@ -26,6 +26,25 @@ const getOrder = async (req, res) => {
   }
 };
 
+const getOrdersByMail = async (req, res) => {
+  let userEmail = req.params.userEmail;
+
+  try {
+    const orders = await OrdersModel.find({ email: userEmail });
+
+    if (!orders || orders.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "Aucune commande trouvée pour cet email." });
+    }
+
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur du serveur" });
+  }
+};
+
 // Ajouter commande
 
 const addOrder = async (req, res) => {
@@ -70,4 +89,11 @@ const deleteOrder = async (req, res) => {
   }
 };
 
-module.exports = { getOrders, getOrder, addOrder, updateOrder, deleteOrder };
+module.exports = {
+  getOrders,
+  getOrder,
+  addOrder,
+  updateOrder,
+  deleteOrder,
+  getOrdersByMail,
+};
