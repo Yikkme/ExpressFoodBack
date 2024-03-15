@@ -4,7 +4,6 @@ const {
   deleteHomeProducts,
 } = require("../controllers/ProductsController");
 
-// Tâche cron pour mettre à jour les produits aléatoires toutes les 10 secondes
 const updateRandomProductsDaily = () => {
   cron.schedule("*/60 * * * * *", async () => {
     try {

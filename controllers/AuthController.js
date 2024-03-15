@@ -9,7 +9,7 @@ const Signup = async (req, res, next) => {
     const { firstname, lastname, email, password, phone, role, address } =
       req.body;
 
-    console.log(req.body); // Affiche le contenu de req.body dans la console
+    console.log(req.body);
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {

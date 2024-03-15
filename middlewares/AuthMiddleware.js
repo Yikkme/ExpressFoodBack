@@ -13,8 +13,6 @@ module.exports.userVerification = (req, res, next) => {
 
     jwt.verify(token, process.env.TOKEN_KEY, (err, user) => {
       if (err) {
-        console.log("Token verification error:", err.message); // For debugging
-
         return res.sendStatus(403);
       }
 
