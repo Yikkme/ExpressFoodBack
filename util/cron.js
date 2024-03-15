@@ -5,6 +5,7 @@ const {
 } = require("../controllers/ProductsController");
 
 const updateRandomProductsDaily = () => {
+  // */10 * * * * * 
   cron.schedule("0 0 * * *", async () => {
     try {
       await deleteHomeProducts();
