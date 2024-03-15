@@ -61,7 +61,7 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce proje
 
 - [Nicky](https://github.com/Yikkmee) - Développeur principal
 - [Abdellah](https://github.com/Mrcut) - Développeur principal
-- [Doua](https://github.com/Doua) - Développeur principal
+- [Doua](https://github.com/Doua) - Chef de Projet
 
 
 
