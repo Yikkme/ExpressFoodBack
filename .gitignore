@@ -7,3 +7,6 @@ node_modules/
 # Windows files
 Thumbs.db
 Desktop.ini
+
+# Protected files
+.env

@@ -9,6 +9,8 @@ const HomeProductsModel = new mongoose.Schema({
   type: String,
   price: Number,
   quantity: Number,
+  available: Boolean,
+
 });
 
 module.exports = mongoose.model("homeProducts", HomeProductsModel, "HomeProducts");

@@ -25,7 +25,9 @@ const addHomeProducts = async () => {
             description: product.description,
             type: product.type,
             price: product.price,
-            quantity: product.quantity
+            quantity: product.quantity,
+            available: product.available
+
         }));
 
         // Insérer les données dans la collection spéciale HomeProducts

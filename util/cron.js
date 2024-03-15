@@ -5,12 +5,12 @@ const {
 } = require("../controllers/ProductsController");
 
 const updateRandomProductsDaily = () => {
-  cron.schedule("*/60 * * * * *", async () => {
+  cron.schedule("0 0 * * *", async () => {
     try {
       await deleteHomeProducts();
       await addHomeProducts();
 
-      console.log("Produits aléatoires mis à jour avec succès");
+      console.log("Produits modifié mis à jour avec succès");
     } catch (error) {
       console.error(
         "Erreur lors de la mise à jour des produits aléatoires:",
